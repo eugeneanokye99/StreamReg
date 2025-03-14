@@ -33,7 +33,6 @@ This is a **full-stack workshop registration web application** built using **Rea
 - **Node.js & Express.js** – Server and API management
 - **MongoDB & Mongoose** – Database for storing users and workshops
 - **JWT Authentication** – Secure user sessions
-- **Stripe/PayPal API** – Payment processing
 
 ## Installation & Setup
 1. **Clone the repository:**
