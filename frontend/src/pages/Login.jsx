@@ -1,9 +1,9 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const { login } = useContext(AuthContext);
+  const { login, user } = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -11,8 +11,20 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     await login(email, password);
-    navigate("/");
   };
+
+    // Redirect based on user role after login
+    useEffect(() => {
+      if (user) {
+        console.log("Logged in user:", user);
+        if (user.role === "admin") {
+          navigate("/admin"); // Redirect to admin dashboard
+        } else {
+          navigate("/"); // Redirect to homepage for normal users
+        }
+      }
+    }, [user, navigate]);
+  
 
   return (
     <div className="flex flex-col md:flex-row h-screen bg-gray-100">

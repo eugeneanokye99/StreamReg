@@ -10,7 +10,7 @@ const AdminDashboard = () => {
     const fetchData = async () => {
       try {
         const workshopRes = await axios.get("http://localhost:5000/api/workshops");
-        const userRes = await axios.get("http://localhost:5000/api/users");
+        const userRes = await axios.get("http://localhost:5000/api/auth/user");
         setWorkshops(workshopRes.data);
         setUsers(userRes.data);
       } catch (error) {
@@ -46,9 +46,9 @@ const AdminDashboard = () => {
       <aside className="w-64 bg-gray-900 text-white p-6">
         <h1 className="text-2xl font-bold mb-6">Admin Panel</h1>
         <nav className="space-y-4">
-          <a href="#" className="block py-2 px-4 bg-gray-800 rounded">Dashboard</a>
+          <a href="/admin" className="block py-2 px-4 bg-gray-800 rounded">Dashboard</a>
           <a href="#" className="block py-2 px-4 hover:bg-gray-700 rounded">Users</a>
-          <a href="#" className="block py-2 px-4 hover:bg-gray-700 rounded">Workshops</a>
+          <a href="/workshops" className="block py-2 px-4 hover:bg-gray-700 rounded">Workshops</a>
           <a href="#" className="block py-2 px-4 hover:bg-gray-700 rounded">Analytics</a>
         </nav>
       </aside>
@@ -69,7 +69,7 @@ const AdminDashboard = () => {
           </div>
           <div className="bg-white p-4 shadow-md rounded-lg text-center">
             <h2 className="text-gray-600 text-lg">Revenue</h2>
-            <p className="text-3xl font-bold">$12,340</p>
+            <p className="text-3xl font-bold">₵12,340</p>
           </div>
         </div>
 
@@ -80,7 +80,7 @@ const AdminDashboard = () => {
             <input type="text" placeholder="Title" value={newWorkshop.title} onChange={(e) => setNewWorkshop({ ...newWorkshop, title: e.target.value })} className="border p-2 w-full rounded" required />
             <textarea placeholder="Description" value={newWorkshop.description} onChange={(e) => setNewWorkshop({ ...newWorkshop, description: e.target.value })} className="border p-2 w-full rounded" required />
             <input type="date" value={newWorkshop.date} onChange={(e) => setNewWorkshop({ ...newWorkshop, date: e.target.value })} className="border p-2 w-full rounded" required />
-            <input type="number" placeholder="Price ($)" value={newWorkshop.price} onChange={(e) => setNewWorkshop({ ...newWorkshop, price: e.target.value })} className="border p-2 w-full rounded" required />
+            <input type="number" placeholder="Price (₵)" value={newWorkshop.price} onChange={(e) => setNewWorkshop({ ...newWorkshop, price: e.target.value })} className="border p-2 w-full rounded" required />
             <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded w-full hover:bg-blue-600 transition">Create Workshop</button>
           </form>
         </div>
