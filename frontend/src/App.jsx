@@ -6,6 +6,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Workshops from "./pages/Workshops";
 import AdminDashboard from "./pages/AdminDashboard";
+import WorkshopRegister from "./pages/WorkshopRegister"
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route path="/workshops" element={<Workshops />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/workshop_register/:id" element={<WorkshopRegister />} />
             <Route path="/admin" element={<AdminDashboard />} />
           </Routes>
         </div>
